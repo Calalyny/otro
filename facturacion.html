@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación - Ferrusec PC Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="logo">
+                        <a href="index.html">
+                            <span class="gradient-text">Ferrusec</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <h1><span class="gradient-text">Generación de Documentos</span></h1>
+            
+            <div class="invoice-grid">
+                <div class="invoice-form-container">
+                    <h2>Datos para <span id="documentTypeText">Factura</span></h2>
+                    
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="factura" name="documentType" value="factura" checked>
+                            <label for="factura">Factura</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="boleta" name="documentType" value="boleta">
+                            <label for="boleta">Boleta</label>
+                        </div>
+                    </div>
+
+                    <h3>Datos del Cliente</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customerName">Nombre Completo *</label>
+                            <input type="text" id="customerName" placeholder="Nombre y apellidos" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerId" id="customerIdLabel">RUT *</label>
+                            <input type="text" id="customerId" placeholder="Ej: 12345678-9" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerEmail">Email *</label>
+                            <input type="email" id="customerEmail" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerPhone">Teléfono *</label>
+                            <input type="tel" id="customerPhone" placeholder="+56 9 1234 5678" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="customerAddress">Dirección *</label>
+                            <input type="text" id="customerAddress" placeholder="Calle, número, depto." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerCity">Ciudad *</label>
+                            <input type="text" id="customerCity" placeholder="Ciudad" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerRegion">Región *</label>
+                            <select id="customerRegion" required>
+                                <option value="">Seleccione región</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Áncash">Áncash</option>
+                                <option value="Apurímac">Apurímac</option>
+                                <option value="Arequipa">Arequipa</option>
+                                <option value="Ayacucho">Ayacucho</option>
+                                <option value="Cajamarca">Cajamarca</option>
+                                <option value="Callao">Callao</option>
+                                <option value="Cusco">Cusco</option>
+                                <option value="Huancavelica">Huancavelica</option>
+                                <option value="Huánuco">Huánuco</option>
+                                <option value="Ica">Ica</option>
+                                <option value="Junín">Junín</option>
+                                <option value="La Libertad">La Libertad</option>
+                                <option value="Lambayeque">Lambayeque</option>
+                                <option value="Lima">Lima</option>
+                                <option value="Loreto">Loreto</option>
+                                <option value="Madre de Dios">Madre de Dios</option>
+                                <option value="Moquegua">Moquegua</option>
+                                <option value="Pasco">Pasco</option>
+                                <option value="Piura">Piura</option>
+                                <option value="Puno">Puno</option>
+                                <option value="San Martín">San Martín</option>
+                                <option value="Tacna">Tacna</option>
+                                <option value="Tumbes">Tumbes</option>
+                                <option value="Ucayali">Ucayali</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+
+                    <h3>Método de Pago y Entrega</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="paymentMethod">Método de Pago *</label>
+                            <select id="paymentMethod" required>
+                                <option value="">Seleccione método</option>
+                                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                                <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                                <option value="Efectivo">Efectivo</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deliveryMethod">Método de Entrega *</label>
+                            <select id="deliveryMethod" required>
+                                <option value="">Seleccione método</option>
+                                <option value="Retiro en Tienda">Retiro en Tienda</option>
+                                <option value="Despacho a Domicilio">Despacho a Domicilio</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3>Producto Seleccionado</h3>
+                    <div id="productDetails" class="product-details">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="backButton" class="btn-outline">
+                            <i class="fas fa-arrow-left"></i> Volver a Productos
+                        </button>
+                        <button type="button" id="printButton" class="btn-primary">
+                            <i class="fas fa-print"></i> Imprimir
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="invoice-preview-container">
+                    <h2>Vista Previa</h2>
+                    <div class="invoice-preview" id="invoicePreview">
+                        <div class="invoice-header">
+                            <div>
+                                <h2 class="invoice-title" id="previewDocumentType">FACTURA</h2>
+                                <p>N° <span id="documentNumber">00001</span></p>
+                                <p>Fecha: <span id="documentDate"></span></p>
+                            </div>
+                            <div class="company-info">
+                                <h3>Ferrusec PC Store</h3>
+                                <p>Av. Villa de Pasco 123</p>
+                                <p>Pasco, Peru</p>
+                                <p>info@Ferrusec.com</p>
+                                <p>+51 999999999</p>
+                            </div>
+                        </div>
+
+                        <div class="invoice-customer">
+                            <h3>Cliente:</h3>
+                            <p id="previewName">Nombre del Cliente</p>
+                            <p id="previewId"></p>
+                            <p id="previewEmail"></p>
+                            <p id="previewPhone"></p>
+                            <p id="previewAddress"></p>
+                        </div>
+
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Descripción</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-center">Precio Unit.</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewItems">
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td class="text-right">Subtotal:</td>
+                                    <td class="text-right" id="previewSubtotal">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td class="text-right">IVA (19%):</td>
+                                    <td class="text-right" id="previewTax">$0.00</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td colspan="2"></td>
+                                    <td class="text-right">Total:</td>
+                                    <td class="text-right" id="previewTotal">$0.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <div class="invoice-payment-info">
+                            <p><strong>Método de Pago:</strong> <span id="previewPayment">-</span></p>
+                            <p><strong>Método de Entrega:</strong> <span id="previewDelivery">-</span></p>
+                        </div>
+
+                        <div class="invoice-terms">
+                            <h4>Términos y Condiciones</h4>
+                            <p>Garantía de 12 meses en todos nuestros productos. Para devoluciones y cambios, consulte nuestra política en www.Ferrusec.com/garantia</p>
+                        </div>
+
+                        <div class="invoice-footer">
+                            <p>Gracias por su compra</p>
+                            <p>Ferrusec PC Store - RUT: 76.123.456-7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="background-animation">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <script src="facturacion.js"></script>
+</body>
+</html>
